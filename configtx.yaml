@@ -1,11 +1,3 @@
-Skip to content
- kctam / 3org1ch
-Code  Issues 0  Pull requests 0  Projects 0  Wiki  Security  Pulse  Community
-3org1ch/configtx.yaml
-@kctam kctam first commit
-87a1794 15 days ago
-155 lines (145 sloc)  4.09 KB
-  
 ---
 Organizations:
     - &OrdererOrg
