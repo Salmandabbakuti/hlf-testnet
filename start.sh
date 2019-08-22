@@ -23,3 +23,5 @@ sudo docker exec -e "CORE_PEER_LOCALMSPID=Org3MSP" -e "CORE_PEER_MSPCONFIGPATH=/
 peer channel join -b mychannel.block
 exit 
 echo 'All Peers Joined channel..'
+
+exit 1
