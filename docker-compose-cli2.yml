@@ -5,7 +5,7 @@ networks:
 
 services:
   cli:
-    container_name: cli1
+    container_name: cli2
     image: hyperledger/fabric-tools
     tty: true
     environment:
@@ -21,8 +21,8 @@ services:
     command: /bin/bash
     volumes:
         - /var/run/:/host/var/run/
-        - ../chaincode/:/opt/gopath/src/github.com/chaincode
+        - chaincode/:/opt/gopath/src/github.com/chaincode
         - $GOPATH/src/github.com/hyperledger/fabric/:/opt/gopath/src/github.com/hyperledger/fabric/
-        - ../crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
+        - crypto-config:/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/
     networks:
         - behave
