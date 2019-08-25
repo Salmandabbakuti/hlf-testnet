@@ -13,7 +13,7 @@ sudo docker exec -it cli3 peer chaincode install -n mycc -p github.com/chaincode
 
 echo 'Instantiating Chaincode on channel ...'
 
-sudo docker exec -it cli peer chaincode instantiate -o orderer0.example.com:7050 -C mychannel -n mycc github.com/chaincode -v v0 -c '{"Args": ["a", "100"]}'
+sudo docker exec -it cli peer chaincode instantiate -o orderer.example.com:7050 -C mychannel -n mycc github.com/chaincode -v v0 -c '{"Args": ["a", "100"]}'
  
 echo 'All Done.. You're Good to go.. Bye'
 
