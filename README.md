@@ -10,6 +10,9 @@
 curl -sSL http://bit.ly/2ysbOFE | bash -s
 
 ```
+
+>Note: Tested under 1.4.2
+
 2. Generate Crypto certificates and channel artifacts
 
 ```
