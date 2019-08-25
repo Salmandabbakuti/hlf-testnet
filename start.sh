@@ -1,4 +1,4 @@
-echo ' Bringing Network Up and Running...
+echo ' Bringing Network Up and Running...'
 
 sudo docker-compose -f docker-compose-cli.yaml up -d
 
