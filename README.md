@@ -36,6 +36,6 @@ curl -sSL http://bit.ly/2ysbOFE | bash -s
 
 6. Shutdown Network and clear Containers
 
-'''
+```
 ./teardown.sh
 ```
