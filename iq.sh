@@ -29,3 +29,5 @@ echo 'Querying For Result on Org3 Peer'
 sudo docker exec -it cli3 peer chaincode query -n mycc -c '{"Args":["query","a"]}' -C mychannel
 
 echo 'All Done.. You're Awesome.. have a great day... bye..'
+
+exit 1
