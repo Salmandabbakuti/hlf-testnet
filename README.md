@@ -1,8 +1,41 @@
 # hlf-testnet
 3 org single channel network for testing
 
-```
-sudo docker exec -e "CORE_PEER_LOCALMSPID=Org1MSP" -e "CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp" peer0.org1.example.com peer channel create -o orderer.example.com:7050 -c mychannel -f ./channel-artifacts/channel.tx
+### Steps
 
-sudo docker exec -e "CORE_PEER_LOCALMSPID=Org1MSP" -e "CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp" peer0.org1.example.com peer channel join -b mychannel.block
+1. Download latest fabric tools and docker images
+
+```
+
+curl -sSL http://bit.ly/2ysbOFE | bash -s
+
+```
+2. Generate Crypto certificates and channel artifacts
+
+```
+./generate.sh
+```
+
+3.Create Channel and join all peers to it
+
+```
+./start.sh
+```
+
+4.Install and Instantiating Chaincode
+
+```
+./installCc.sh
+```
+
+5.Invoke and query Chaincode on all 3 peers
+
+```
+./iq.sh
+```
+
+6. Shutdown Network and clear Containers
+
+'''
+./teardown.sh
 ```
