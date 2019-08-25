@@ -11,10 +11,10 @@ sudo docker exec -it cli peer channel join -b mychannel.block
 
 echo 'Exporting channel block to other Peer Containers..'
 
-docker cp cli:/mychannel.block .
+docker cp cli:/opt/gopath/src/github.com/hyperledger/fabric/peer/mychannel.block .
 
-docker cp mychannel.block cli2:/mychannel.block
-docker cp mychannel.block cli3:/mychannel.block
+docker cp mychannel.block cli2:/opt/gopath/src/github.com/hyperledger/fabric/peer/mychannel.block
+docker cp mychannel.block cli3:/opt/gopath/src/github.com/hyperledger/fabric/peer/mychannel.block
 
 
 echo 'Org2 Peer joining Channel..'
