@@ -5,8 +5,6 @@ echo 'Clearing  docker containers..'
 
 sudo docker-compose -f docker-compose-cli.yaml down
 
-sudo docker rm $(docker ps -a -q)
-
 # DELETE THE OLD DOCKER VOLUMES
 sudo docker volume prune
 
