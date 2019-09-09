@@ -29,7 +29,7 @@ services:
       - ./crypto-config/peerOrganizations/org1.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
     container_name: ca.org1.example.com
     networks:
-      - basic
+      - byfn
   ca.org2.example.com:
     image: hyperledger/fabric-ca
     environment:
@@ -44,7 +44,7 @@ services:
       - ./crypto-config/peerOrganizations/org2.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
     container_name: ca.org2.example.com
     networks:
-      - basic
+      - byfn
   
 
   ca.org3.example.com:
@@ -61,7 +61,7 @@ services:
       - ./crypto-config/peerOrganizations/org3.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
     container_name: ca.org3.example.com
     networks:
-      - basic
+      - byfn
 
   orderer.example.com:
     extends:
