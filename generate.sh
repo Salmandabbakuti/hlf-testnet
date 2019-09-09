@@ -1,4 +1,3 @@
-rm -rf crypto-config
 rm -rf channel-artifacts
 mkdir channel-artifacts
 export PATH=${PWD}/bin:${PWD}:$PATH
@@ -17,6 +16,7 @@ sed -i "s/${PRIV_KEY11}/CA1_PRIVATE_KEY/g" docker-compose-cli.yaml
 sed -i "s/${PRIV_KEY12}/CA2_PRIVATE_KEY/g" docker-compose-cli.yaml
 sed -i "s/${PRIV_KEY13}/CA3_PRIVATE_KEY/g" docker-compose-cli.yaml
 
+rm -rf crypto-config
 
 echo 'Generating Certificates...'
 
