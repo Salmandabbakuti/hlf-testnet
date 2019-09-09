@@ -13,9 +13,9 @@ cd $CURRENT_DIR
 cd crypto-config/peerOrganizations/org3.example.com/ca/
 PRIV_KEY13=$(ls *_sk)
 
-sed -i "s/${PRIV_KEY11}/CA1_PRIVATE_KEY/g" docker-compose-kafka.yml
-sed -i "s/${PRIV_KEY12}/CA2_PRIVATE_KEY/g" docker-compose-kafka.yml
-sed -i "s/${PRIV_KEY13}/CA3_PRIVATE_KEY/g" docker-compose-kafka.yml
+sed -i "s/${PRIV_KEY11}/CA1_PRIVATE_KEY/g" docker-compose-cli.yaml
+sed -i "s/${PRIV_KEY12}/CA2_PRIVATE_KEY/g" docker-compose-cli.yaml
+sed -i "s/${PRIV_KEY13}/CA3_PRIVATE_KEY/g" docker-compose-cli.yaml
 
 
 echo 'Generating Certificates...'
@@ -38,9 +38,9 @@ cd crypto-config/peerOrganizations/org3.example.com/ca/
 PRIV_KEY3=$(ls *_sk)
 
 cd $CURRENT_DIR
-sed -i "s/CA1_PRIVATE_KEY/${PRIV_KEY1}/g" docker-compose-kafka.yml
-sed -i "s/CA2_PRIVATE_KEY/${PRIV_KEY2}/g" docker-compose-kafka.yml
-sed -i "s/CA3_PRIVATE_KEY/${PRIV_KEY3}/g" docker-compose-kafka.yml
+sed -i "s/CA1_PRIVATE_KEY/${PRIV_KEY1}/g" docker-compose-cli.yaml
+sed -i "s/CA2_PRIVATE_KEY/${PRIV_KEY2}/g" docker-compose-cli.yaml
+sed -i "s/CA3_PRIVATE_KEY/${PRIV_KEY3}/g" docker-compose-cli.yaml
 
 
 echo 'All Done..'
