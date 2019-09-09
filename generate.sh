@@ -11,6 +11,7 @@ PRIV_KEY12=$(ls *_sk)
 cd $CURRENT_DIR
 cd crypto-config/peerOrganizations/org3.example.com/ca/
 PRIV_KEY13=$(ls *_sk)
+cd $CURRENT_DIR
 
 sed -i "s/${PRIV_KEY11}/CA1_PRIVATE_KEY/g" docker-compose-cli.yaml
 sed -i "s/${PRIV_KEY12}/CA2_PRIVATE_KEY/g" docker-compose-cli.yaml
@@ -27,7 +28,6 @@ configtxgen -profile ThreeOrgsChannel -outputCreateChannelTx ./channel-artifacts
 
 sleep 5
 echo 'Setting up CA Containers'
-CURRENT_DIR=$PWD
 cd crypto-config/peerOrganizations/org1.example.com/ca/
 PRIV_KEY1=$(ls *_sk)
 cd $CURRENT_DIR
