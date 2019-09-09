@@ -2,7 +2,7 @@
     "name": "hlf-testnet",
     "version": "1.0.0",
     "client": {
-        "organization": "Org1",
+        "organization": "Org2",
         "connection": {
             "timeout": {
                 "peer": {
