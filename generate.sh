@@ -14,8 +14,8 @@ cd crypto-config/peerOrganizations/org3.example.com/ca/
 PRIV_KEY13=$(ls *_sk)
 
 sed -i "s/${PRIV_KEY11}/CA1_PRIVATE_KEY/g" docker-compose-kafka.yml
-sed -i "s/${PRIV_KEY12}/CA1_PRIVATE_KEY/g" docker-compose-kafka.yml
-sed -i "s/${PRIV_KEY13}/CA1_PRIVATE_KEY/g" docker-compose-kafka.yml
+sed -i "s/${PRIV_KEY12}/CA2_PRIVATE_KEY/g" docker-compose-kafka.yml
+sed -i "s/${PRIV_KEY13}/CA3_PRIVATE_KEY/g" docker-compose-kafka.yml
 
 
 echo 'Generating Certificates...'
