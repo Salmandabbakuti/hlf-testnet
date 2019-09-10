@@ -29,7 +29,7 @@ async function main() {
         const network = await gateway.getNetwork('mychannel');
 
         // Get the contract from the network.
-        const contract = network.getContract('mycc');
+        const contract = network.getContract('ecom');
 
         await contract.submitTransaction('buyProduct','Item0','Salman','2');
         console.log('Transaction has been submitted');
