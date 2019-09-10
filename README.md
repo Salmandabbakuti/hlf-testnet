@@ -28,7 +28,7 @@ curl -sSL http://bit.ly/2ysbOFE | bash -s
 4.Install and Instantiating Chaincode
 
 ```
-./installCc.sh
+./installSacc.sh
 ```
 
 5.Invoke and query Chaincode on all 3 peers
