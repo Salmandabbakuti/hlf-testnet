@@ -1,11 +1,11 @@
-'use strict';
+use strict';
 
 const FabricCAServices = require('fabric-ca-client');
 const { FileSystemWallet, X509WalletMixin } = require('fabric-network');
 const fs = require('fs');
 const path = require('path');
 
-const ccpPath = path.resolve(__dirname, '..', 'hlf-testnet', 'connection-org3.json');
+const ccpPath = path.resolve(__dirname, '..', 'hlf-testnet', 'connection-org2.json');
 const ccpJSON = fs.readFileSync(ccpPath, 'utf8');
 const ccp = JSON.parse(ccpJSON);
 
@@ -13,7 +13,7 @@ async function main() {
     try {
 
         // Create a new CA client for interacting with the CA.
-        const caURL = ccp.certificateAuthorities['ca.org3.example.com'].url;
+        const caURL = ccp.certificateAuthorities['ca.org2.example.com'].url;
         const ca = new FabricCAServices(caURL);
 
         // Create a new file system based wallet for managing identities.
@@ -22,19 +22,19 @@ async function main() {
         console.log(`Wallet path: ${walletPath}`);
 
         // Check to see if we've already enrolled the admin user.
-        const adminExists = await wallet.exists('admin-org3');
+        const adminExists = await wallet.exists('admin-org2');
         if (adminExists) {
-            console.log('An identity for the admin user "admin-org3" already exists in the wallet');
+            console.log('An identity for the admin user "admin-org2" already exists in the wallet');
             return;
         }
         // Enroll the admin user, and import the new identity into the wallet.
         const enrollment = await ca.enroll({ enrollmentID: 'admin', enrollmentSecret: 'adminpw' });
-        const identity = X509WalletMixin.createIdentity('Org3MSP', enrollment.certificate, enrollment.key.toBytes());
-        wallet.import('admin-org3', identity);
-        console.log('Successfully enrolled admin user "admin-org3" and imported it into the wallet');
+        const identity = X509WalletMixin.createIdentity('Org2MSP', enrollment.certificate, enrollment.key.toBytes());
+        wallet.import('admin-org2', identity);
+        console.log('Successfully enrolled admin user "admin-org2" and imported it into the wallet');
 
     } catch (error) {
-        console.error(`Failed to enroll admin user "admin-org3": ${error}`);
+        console.error(`Failed to enroll admin user "admin-org2": ${error}`);
         process.exit(1);
     }
 }

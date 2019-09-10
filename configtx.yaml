@@ -14,6 +14,7 @@ Organizations:
             Admins:
                 Type: Signature
                 Rule: "OR('OrdererMSP.admin')"
+
     - &Org1
         Name: Org1MSP
         ID: Org1MSP
@@ -28,6 +29,7 @@ Organizations:
             Admins:
                 Type: Signature
                 Rule: "OR('Org1MSP.admin')"
+
     - &Org2
         Name: Org2MSP
         ID: Org2MSP
@@ -42,6 +44,7 @@ Organizations:
             Admins:
                 Type: Signature
                 Rule: "OR('Org2MSP.admin')"
+
     - &Org3
         Name: Org3MSP
         ID: Org3MSP
@@ -55,15 +58,19 @@ Organizations:
                 Rule: "OR('Org3MSP.admin', 'Org3MSP.client')"
             Admins:
                 Type: Signature
-                Rule: "OR('Org3MSP.admin')"
+                Rule: "OR('Org3MSP.admin')" 
 
 Capabilities:
     Channel: &ChannelCapabilities
-        V1_3: true
+        V1_4_3: true
+        V1_3: false
+        V1_1: false
     Orderer: &OrdererCapabilities
-        V1_1: true
+        V1_4_2: true
+        V1_1: false
     Application: &ApplicationCapabilities
-        V1_3: true
+        V1_4_2: true
+        V1_3: false
         V1_2: false
         V1_1: false
 
@@ -92,10 +99,13 @@ Orderer: &OrdererDefaults
         MaxMessageCount: 10
         AbsoluteMaxBytes: 99 MB
         PreferredMaxBytes: 512 KB
+
     Kafka:
         Brokers:
             - 127.0.0.1:9092
+
     Organizations:
+
     Policies:
         Readers:
             Type: ImplicitMeta
@@ -110,7 +120,6 @@ Orderer: &OrdererDefaults
             Type: ImplicitMeta
             Rule: "ANY Writers"
 
-
 Channel: &ChannelDefaults
     Policies:
         Readers:
@@ -124,7 +133,6 @@ Channel: &ChannelDefaults
             Rule: "MAJORITY Admins"
     Capabilities:
         <<: *ChannelCapabilities
-
 
 Profiles:
 
@@ -144,6 +152,7 @@ Profiles:
                     - *Org3
     ThreeOrgsChannel:
         Consortium: SampleConsortium
+        <<: *ChannelDefaults
         Application:
             <<: *ApplicationDefaults
             Organizations:
