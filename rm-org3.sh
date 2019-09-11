@@ -32,6 +32,15 @@ echo 'Signing and Submitting To Ordere to Include in Ledger ...'
 
 sudo docker exec -it cli2 peer channel update -f update_in_envelope.pb -c mychannel -o orderer.example.com:7050
 
+rm -rf config.json
+rm -rf modified_config.json
+rm -rf config_block.pb
+rm -rf config.pb
+rm -rf modified_config.pb
+rm -rf update.pb
+rm -rf update.json
+rm -rf update_in_envelope.pb
+
 echo 'All Done..'
 
 exit 1
