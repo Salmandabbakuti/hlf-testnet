@@ -49,3 +49,66 @@
 9.Orderer will Validates the block and sends back to commiting peers. This time it will not send block to Removed Org Peers..
 
 #### Steps
+**Make Sure you are in CLI container or Peer Container.All These commands only work in Container**
+```
+docker exec -it cli bash
+docker exec -it <Peer Container Name> bash
+
+```
+
+1.Fetch latest config block from network
+
+```
+peer channel fetch config config_block.pb -o orderer.example.com:7050 -c mychannel
+```
+
+2.Decode config block and extract Org Config info to Json
+
+```
+configtxlator proto_decode --input config_block.pb --type common.Block | jq .data.data[0].payload.data.config > config.json
+```
+
+3.Remove Oranization (of your choice) Artifacts from Json and save as new file (2)
+
+```
+jq 'del(.channel_group.groups.Application.groups.Org3MSP)' config.json > modified_config.json
+```
+
+4.Encode (1) and (2) files into binary Proto buffs(3),(4)
+```
+configtxlator proto_encode --input config.json --type common.Config --output config.pb
+
+configtxlator proto_encode --input modified_config.json --type common.Config --output modified_config.pb
+```
+
+5.Compute Delta(binary difference) between (3) and (4) and result is (5)
+```
+configtxlator compute_update --channel_id mychannel --original config.pb --updated modified_config.pb --output update.pb
+```
+
+6.Decode (5) into json and add an json envelope to it resulting (6)
+
+```
+configtxlator proto_decode --input update.pb --type common.ConfigUpdate | jq . > update.json
+
+echo '{"payload":{"header":{"channel_header":{"channel_id":"mychannel", "type":2}},"data":{"config_update":'$(cat update.json)'}}}' | jq . > update_in_envelope.json
+```
+
+7.Encode (6) back to protobuff (7)
+```
+configtxlator proto_encode --input update_in_envelope.json --type common.Envelope --output update_in_envelope.pb
+```
+
+8.Sign the block(7) by Endorsing peers and submit block to Orderer.
+
+a.Signing Block By Org1 Peer and Sending to Org2 Peer..'
+```
+peer channel signconfigtx -f update_in_envelope.pb
+
+sudo docker cp cli:/opt/gopath/src/github.com/hyperledger/fabric/peer/update_in_envelope.pb .
+
+sudo docker cp update_in_envelope.pb cli2:/opt/gopath/src/github.com/hyperledger/fabric/peer/update_in_envelope.pb
+# Signing By Org2 Peer and Submitting Transaction
+peer channel update -f update_in_envelope.pb -c mychannel -o orderer.example.com:7050
+
+```
