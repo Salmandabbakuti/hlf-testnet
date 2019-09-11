@@ -8,7 +8,7 @@ sudo docker exec -it cli configtxlator proto_decode --input config_block.pb --ty
 sleep 3
 echo 'Removing Org3 MSP from Configuration..'
 sudo docker exec -it cli jq 'del(.channel_group.groups.Application.groups.Org3MSP)' config.json > modified_config.json
-sleep3
+sleep 3
 echo 'Encoding Before and After Json files..'
 sudo docker exec -it cli configtxlator proto_encode --input config.json --type common.Config --output config.pb
 sudo docker exec -it cli configtxlator proto_encode --input modified_config.json --type common.Config --output modified_config.pb
