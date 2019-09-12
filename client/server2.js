@@ -7,7 +7,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Setting for Hyperledger Fabric
 const { FileSystemWallet, Gateway } = require('fabric-network');
 const path = require('path');
-const ccpPath = path.resolve(__dirname,'..','hlf-testnet', 'connection-org2.json');
+const ccpPath = path.resolve(__dirname,'..','connection-org2.json');
 
 app.get('/', function (req, res) {
 res.sendFile('app.html', { root: __dirname});
