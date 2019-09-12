@@ -3,22 +3,51 @@
 #### Workflow
 
 1.Fetch latest config block from network
+```
+peer channel fetch config config_block.pb -o orderer.example.com:7050 -c mychannel
+```
 
 2.Decode config block and extract Required Orgs information into Json(1)
 
+```
+ configtxlator proto_decode --input config_block.pb --type common.Block | jq .data.data[0].payload.data.config > config.json
+```
+
 3.Create new Oranization Config in json(of your choice)  (2)
-
+```
+export FABRIC_CFG_PATH=$PWD && configtxgen -printOrg Org4MSP > ../channel-artifacts/org4.json
+```
 4.Add (2) data into (1) using configtxlator jq and save as new file (2a)
-
+```
+jq -s '.[0] * {"channel_group":{"groups":{"Application":{"groups": {"Org4MSP":.[1]}}}}}' config.json ./channel-artifacts/org4.json > modified_config.json
+```
 5.Encode (1) and (2a) files into binary Proto buffs(3),(4)
-
+```
+configtxlator proto_encode --input config.json --type common.Config --output config.pb
+configtxlator proto_encode --input modified_config.json --type common.Config --output modified_config.pb
+```
 6.Compute Delta(binary difference) between (3) and (4) and result is (5)
 
+```
+configtxlator compute_update --channel_id mychannel --original config.pb --updated modified_config.pb --output org4_update.pb
+```
 7.Decode (5) into json and add an json envelope to it resulting (6)
+```
+configtxlator proto_decode --input org4_update.pb --type common.ConfigUpdate | jq . > org4_update.json
 
+echo '{"payload":{"header":{"channel_header":{"channel_id":"mychannel", "type":2}},"data":{"config_update":'$(cat org4_update.json)'}}}' | jq . > org4_update_in_envelope.json
+```
 8.Encode (6) back to protobuff (7)
-
+```
+configtxlator proto_encode --input org4_update_in_envelope.json --type common.Envelope --output org4_update_in_envelope.pb
+```
 9.Sign the block(7) by Endorsing peers and submit block to Orderer.
+```
+peer channel signconfigtx -f org4_update_in_envelope.pb
+
+sudo docker cp cli:/opt/gopath/src/github.com/hyperledger/fabric/peer/org4_update_in_envelope.pb .
+
+sudo docker cp org4_update_in_envelope.pb cli2:/opt/gopath/src/github.com/hyperledger/fabric/peer/org4_update_in_envelope.pb
 
 10.Orderer will Validates the block and sends back to commiting peers. This time it will not send block to Removed Org Peers..
 
