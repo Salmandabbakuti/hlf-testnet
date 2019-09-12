@@ -13,7 +13,11 @@ peer channel fetch config config_block.pb -o orderer.example.com:7050 -c mychann
  configtxlator proto_decode --input config_block.pb --type common.Block | jq .data.data[0].payload.data.config > config.json
 ```
 
-3.Create new Oranization Config in json(of your choice)  (2)
+3.Create new Oranization Prepare Certificates and  Config in json(of your choice)  (2)
+```
+cryptogen generate --config=./org4-crypto.yaml
+cp -r ../crypto-config/ordererOrganizations crypto-config/
+```
 ```
 export FABRIC_CFG_PATH=$PWD && configtxgen -printOrg Org4MSP > ../channel-artifacts/org4.json
 ```
