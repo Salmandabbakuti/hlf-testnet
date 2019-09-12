@@ -9,7 +9,7 @@ chmod a+x start.sh
 chmod a+x installCc.sh
 ./generate.sh
 ./start.sh
-./installCc.sh
+./installEcomCc.sh
 cd client
 echo 'Preparing Client Application..'
 chmod a+x prereqs.sh
