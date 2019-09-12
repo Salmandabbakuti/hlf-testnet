@@ -48,7 +48,7 @@ peer channel signconfigtx -f org4_update_in_envelope.pb
 sudo docker cp cli:/opt/gopath/src/github.com/hyperledger/fabric/peer/org4_update_in_envelope.pb .
 
 sudo docker cp org4_update_in_envelope.pb cli2:/opt/gopath/src/github.com/hyperledger/fabric/peer/org4_update_in_envelope.pb
-
+```
 10.Orderer will Validates the block and sends back to commiting peers. This time it will not send block to Removed Org Peers..
 
 
