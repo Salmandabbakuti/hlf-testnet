@@ -15,7 +15,7 @@ jobs:
       run: |
         ./generate.sh
         chmod 777 start.sh
-        chmod 777 installCc.sh
+        chmod 777 installSacc.sh
         chmod 777 iq.sh
         ./start.sh
         ./installSacc.sh
