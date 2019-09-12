@@ -6,7 +6,7 @@ sudo docker volume prune
 sudo docker network prune
 chmod a+x generate.sh
 chmod a+x start.sh
-chmod a+x installCc.sh
+chmod a+x installEcomCc.sh
 ./generate.sh
 ./start.sh
 ./installEcomCc.sh
