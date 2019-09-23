@@ -26,6 +26,8 @@ cryptogen generate --config=crypto-config.yaml
 configtxgen -profile ThreeOrgsOrdererGenesis -outputBlock ./channel-artifacts/genesis.block
 configtxgen -profile ThreeOrgsChannel -outputCreateChannelTx ./channel-artifacts/channel.tx -channelID mychannel
 
+configtxgen -profile TwoOrgsChannel -outputCreateChannelTx ./channel-artifacts/channel12.tx -channelID channel12
+
 sleep 5
 echo 'Setting up CA Containers'
 cd crypto-config/peerOrganizations/org1.example.com/ca/
