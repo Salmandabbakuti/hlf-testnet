@@ -45,4 +45,4 @@ sed -i "s/CA2_PRIVATE_KEY/${PRIV_KEY2}/g" docker-compose-cli.yaml
 sed -i "s/CA3_PRIVATE_KEY/${PRIV_KEY3}/g" docker-compose-cli.yaml
 
 
-echo 'All Done..'
+echo 'All Done...'
