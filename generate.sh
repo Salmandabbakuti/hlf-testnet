@@ -26,6 +26,8 @@ cryptogen generate --config=crypto-config.yaml
 configtxgen -profile ThreeOrgsOrdererGenesis -outputBlock ./channel-artifacts/genesis.block
 configtxgen -profile ThreeOrgsChannel -outputCreateChannelTx ./channel-artifacts/channel.tx -channelID mychannel
 
+configtxgen -profile TwoOrgsChannel -outputCreateChannelTx ./channel-artifacts/channel12.tx -channelID channel12
+
 sleep 5
 echo 'Setting up CA Containers'
 cd crypto-config/peerOrganizations/org1.example.com/ca/
@@ -43,4 +45,4 @@ sed -i "s/CA2_PRIVATE_KEY/${PRIV_KEY2}/g" docker-compose-cli.yaml
 sed -i "s/CA3_PRIVATE_KEY/${PRIV_KEY3}/g" docker-compose-cli.yaml
 
 
-echo 'All Done..'
+echo 'All Done...'
