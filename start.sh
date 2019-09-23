@@ -1,5 +1,8 @@
 echo ' Bringing Network Up and Running...'
 
+sudo docker-compose -f docker-compose-cli.yaml down
+sudo docker volume prune
+sudo docker network prune
 sudo docker-compose -f docker-compose-cli.yaml up -d
 
 sleep 20
