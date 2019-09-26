@@ -1,9 +1,5 @@
 cd ..
-echo 'Initiating  Network Creation..'
-echo 'Cleaning Containers..'
-sudo docker-compose -f docker-compose-cli.yaml down
-sudo docker volume prune
-sudo docker network prune
+echo 'Initiating Network Creation..'
 chmod a+x generate.sh
 chmod a+x start.sh
 chmod a+x installEcomCc.sh
