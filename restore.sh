@@ -2,7 +2,7 @@ set -ev
 
 #bringing network down and clearing volumes
 
-sudo docker-compose -f docker-compose.yml down
+sudo docker-compose -f docker-compose-cli.yaml down
 
 sudo docker volume prune
 
