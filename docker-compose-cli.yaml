@@ -12,7 +12,7 @@ volumes:
   peer0.org3.example.com:
 
 networks:
-  byfn:
+  testnet:
 
 services:
   ca.org1.example.com:
@@ -30,7 +30,7 @@ services:
       - ./crypto-config/peerOrganizations/org1.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
     container_name: ca.org1.example.com
     networks:
-      - byfn
+      - testnet
   ca.org2.example.com:
     image: hyperledger/fabric-ca
     environment:
@@ -46,7 +46,7 @@ services:
       - ./crypto-config/peerOrganizations/org2.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
     container_name: ca.org2.example.com
     networks:
-      - byfn
+      - testnet
   
 
   ca.org3.example.com:
@@ -64,7 +64,7 @@ services:
       - ./crypto-config/peerOrganizations/org3.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
     container_name: ca.org3.example.com
     networks:
-      - byfn
+      - testnet
 
   orderer.example.com:
     extends:
@@ -72,7 +72,7 @@ services:
       service: orderer.example.com
     container_name: orderer.example.com
     networks:
-      - byfn
+      - testnet
 
   peer0.org1.example.com:
     container_name: peer0.org1.example.com
@@ -80,7 +80,7 @@ services:
       file:  base/docker-compose-base.yaml
       service: peer0.org1.example.com
     networks:
-      - byfn
+      - testnet
 
   peer0.org2.example.com:
     container_name: peer0.org2.example.com
@@ -88,7 +88,7 @@ services:
       file:  base/docker-compose-base.yaml
       service: peer0.org2.example.com
     networks:
-      - byfn
+      - testnet
 
   peer0.org3.example.com:
     container_name: peer0.org3.example.com
@@ -96,7 +96,7 @@ services:
       file:  base/docker-compose-base.yaml
       service: peer0.org3.example.com
     networks:
-      - byfn
+      - testnet
 
   cli:
     container_name: cli
@@ -130,7 +130,7 @@ services:
       - peer0.org2.example.com
       - peer0.org3.example.com
     networks:
-      - byfn
+      - testnet
  
   cli2:
     container_name: cli2
@@ -164,7 +164,7 @@ services:
       - peer0.org2.example.com
       - peer0.org3.example.com
     networks:
-      - byfn
+      - testnet
   cli3:
     container_name: cli3
     image: hyperledger/fabric-tools:$IMAGE_TAG
@@ -197,4 +197,4 @@ services:
       - peer0.org2.example.com
       - peer0.org3.example.com
     networks:
-      - byfn
+      - testnet
