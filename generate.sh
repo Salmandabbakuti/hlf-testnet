@@ -23,7 +23,7 @@ echo 'Generating Certificates...'
 
 cryptogen generate --config=crypto-config.yaml
 
-configtxgen -profile ThreeOrgsOrdererGenesis -outputBlock ./channel-artifacts/genesis.block
+configtxgen -profile ThreeOrgsOrdererGenesis -outputBlock ./channel-artifacts/genesis.block --channelID orderersystem
 configtxgen -profile ThreeOrgsChannel -outputCreateChannelTx ./channel-artifacts/channel.tx -channelID mychannel
 
 configtxgen -profile TwoOrgsChannel -outputCreateChannelTx ./channel-artifacts/channel12.tx -channelID channel12
