@@ -91,6 +91,8 @@ services:
     extends:
       file:  base/docker-compose-base.yaml
       service: peer0.org1.example.com
+    depends_on:
+      - couchdb
     networks:
       - byfn
 
@@ -99,6 +101,8 @@ services:
     extends:
       file:  base/docker-compose-base.yaml
       service: peer0.org2.example.com
+    depends_on:
+      - couchdb
     networks:
       - byfn
 
@@ -107,6 +111,8 @@ services:
     extends:
       file:  base/docker-compose-base.yaml
       service: peer0.org3.example.com
+    depends_on:
+      - couchdb
     networks:
       - byfn
 
