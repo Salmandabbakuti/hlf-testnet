@@ -23,13 +23,12 @@ echo 'Generating Certificates...'
 
 cryptogen generate --config=crypto-config.yaml
 
-configtxgen -profile ThreeOrgsOrdererGenesis -outputBlock ./channel-artifacts/genesis.block
+configtxgen -profile ThreeOrgsOrdererGenesis -outputBlock ./channel-artifacts/genesis.block -channelID orderersystemchannel
 configtxgen -profile ThreeOrgsChannel -outputCreateChannelTx ./channel-artifacts/channel.tx -channelID mychannel
 
 configtxgen -profile TwoOrgsChannel -outputCreateChannelTx ./channel-artifacts/channel12.tx -channelID channel12
-
-sleep 5
 echo 'Setting up CA Containers'
+sleep 3
 cd crypto-config/peerOrganizations/org1.example.com/ca/
 PRIV_KEY1=$(ls *_sk)
 cd $CURRENT_DIR
