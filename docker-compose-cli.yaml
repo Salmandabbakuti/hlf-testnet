@@ -76,7 +76,7 @@ services:
   
   couchdb:
         extends:
-            file: base/docker-compose-base.yml
+            file: base/docker-compose-base.yaml
             service: couchdb
         container_name: couchdb
         # Comment/Uncomment the port mapping if you want to hide/expose the CouchDB service,
