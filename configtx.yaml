@@ -42,7 +42,7 @@ Profiles:
             SampleConsortium:
                 Organizations:
                     - *Org1
-    OneOrgsChannel:
+    ChannelAll:
         Consortium: SampleConsortium
         Application:
             <<: *ApplicationDefaults
