@@ -1,5 +1,5 @@
 # hlf-testnet
-3 org single channel network for testing
+single org three peer single channel network for testing
 
 ### Steps
 
@@ -47,6 +47,5 @@ curl -sSL http://bit.ly/2ysbOFE | bash -s
 ```
 cd client
 ./startEcom.sh
-node server1.js //Operating from Org1 and Runs at port 8080
-node server2.js // Operations from Org2 and Runs at port 8081
+node server.js //Operating from Org1 and Runs at port 8080
 ```
