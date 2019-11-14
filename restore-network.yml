@@ -68,7 +68,7 @@ services:
 
   orderer.example.com:
     extends:
-      file:   base/docker-compose-base.yaml
+      file:   base/restore-base.yaml
       service: orderer.example.com
     container_name: orderer.example.com
     networks:
@@ -76,7 +76,7 @@ services:
   
   couchdb01:
     extends:
-      file: base/docker-compose-base.yaml
+      file: base/restore-base.yaml
       service: couchdb
     container_name: couchdb01
         # Comment/Uncomment the port mapping if you want to hide/expose the CouchDB service,
@@ -87,7 +87,7 @@ services:
      - byfn
   couchdb02:
     extends:
-      file: base/docker-compose-base.yaml
+      file: base/restore-base.yaml
       service: couchdb
     container_name: couchdb02
         # Comment/Uncomment the port mapping if you want to hide/expose the CouchDB service,
@@ -98,7 +98,7 @@ services:
       - byfn
   couchdb03:
     extends:
-      file: base/docker-compose-base.yaml
+      file: base/restore-base.yaml
       service: couchdb
     container_name: couchdb03
         # Comment/Uncomment the port mapping if you want to hide/expose the CouchDB service,
@@ -110,7 +110,7 @@ services:
   peer0.org1.example.com:
     container_name: peer0.org1.example.com
     extends:
-      file:  base/docker-compose-base.yaml
+      file:  base/restore-base.yaml
       service: peer0.org1.example.com
     depends_on:
       - couchdb01
@@ -120,7 +120,7 @@ services:
   peer0.org2.example.com:
     container_name: peer0.org2.example.com
     extends:
-      file:  base/docker-compose-base.yaml
+      file:  base/restore-base.yaml
       service: peer0.org2.example.com
     depends_on:
       - couchdb02
@@ -130,7 +130,7 @@ services:
   peer0.org3.example.com:
     container_name: peer0.org3.example.com
     extends:
-      file:  base/docker-compose-base.yaml
+      file:  base/restore-base.yaml
       service: peer0.org3.example.com
     depends_on:
       - couchdb03
