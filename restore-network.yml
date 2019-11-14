@@ -34,7 +34,7 @@ services:
   
   orderer.example.com:
     extends:
-      file:   base/docker-compose-base.yaml
+      file:   base/restore-base.yaml
       service: orderer.example.com
     container_name: orderer.example.com
     networks:
@@ -43,7 +43,7 @@ services:
   peer0.org1.example.com:
     container_name: peer0.org1.example.com
     extends:
-      file:  base/docker-compose-base.yaml
+      file:  base/restore-base.yaml
       service: peer0.org1.example.com
     networks:
       - byfn
@@ -51,7 +51,7 @@ services:
   peer1.org1.example.com:
     container_name: peer1.org1.example.com
     extends:
-      file:  base/docker-compose-base.yaml
+      file:  base/restore-base.yaml
       service: peer1.org1.example.com
     networks:
       - byfn
@@ -59,7 +59,7 @@ services:
   peer2.org1.example.com:
     container_name: peer2.org1.example.com
     extends:
-      file:  base/docker-compose-base.yaml
+      file:  base/restore-base.yaml
       service: peer2.org1.example.com
     networks:
       - byfn
