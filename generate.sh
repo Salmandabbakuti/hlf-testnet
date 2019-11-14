@@ -14,7 +14,7 @@ echo 'Generating Certificates...'
 
 cryptogen generate --config=crypto-config.yaml
 
-configtxgen -profile OneOrgsOrdererGenesis -outputBlock ./channel-artifacts/genesis.block
+configtxgen -profile OneOrgsOrdererGenesis -outputBlock ./channel-artifacts/genesis.block -channelID orderersystemchannel
 configtxgen -profile ChannelAll -outputCreateChannelTx ./channel-artifacts/channel.tx -channelID mychannel
 
 sleep 5
