@@ -9,3 +9,5 @@ PeerOrgs:
     EnableNodeOUs: true
     Template:
       Count: 3
+    Users:
+      Count: 1
