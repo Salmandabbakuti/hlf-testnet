@@ -26,11 +26,12 @@ echo 'commit chaincode on channel..'
 sudo docker exec -it cli peer lifecycle chaincode commit -o orderer.example.com:7050 --channelID mychannel --name fabcar --peerAddresses peer0.org1.example.com:7051 peer0.org2.example.com:7051 peer0.org3.example.com:7051 --version 1.0 --sequence 1 --init-required
 echo 'uncomment lines 30, 32 in start.sh to test invoke and query.'
 
-echo 'Invoking Chaincode '
+echo 'first initailizing Chaincode '
 sudo docker exec -it cli peer chaincode invoke -o orderer.example.com:7050 -C mychannel -n fabcar --peerAddresses peer0.org1.example.com:7051 --isInit -c '{"function":"initLedger","Args":[]}' 
 echo 'Querying Chaincode..'
 sudo docker exec -it cli peer chaincode query -C mychannel -n fabcar -c '{"function":"queryAllCars","Args":[]}'
-
+echo 'invoking chaincode from org2..'
+sudo docker exec -it cli2 peer chaincode invoke -o orderer.example.com:7050 -C mychannel -n fabcar --peerAddresses peer0.org2.example.com:7051 -c '{"function":"changeCarOwner","Args":["CAR9","Salman"]}'
 echo 'All Done.. You are Good to go.. Bye'
 
 exit 1
