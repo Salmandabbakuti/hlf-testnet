@@ -62,11 +62,11 @@ Organizations:
 
 Capabilities:
     Channel: &ChannelCapabilities
-        V2.0: true
+        V2_0: true
     Orderer: &OrdererCapabilities
-        V2.0: true
+        V2_0: true
     Application: &ApplicationCapabilities
-        V2.0: true
+        V2_0: true
         
 Application: &ApplicationDefaults
     Organizations:
