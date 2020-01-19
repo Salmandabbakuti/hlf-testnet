@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Setting for Hyperledger Fabric
 const { Wallets, Gateway } = require('fabric-network');
 const path = require('path');
-const ccpPath = path.resolve(__dirname,'..', 'network', 'basic-network', 'connection.json');
+const ccpPath = path.resolve(__dirname,'..', 'connection-org1.json');
 let user= process.argv[2];
 
 //Getters
