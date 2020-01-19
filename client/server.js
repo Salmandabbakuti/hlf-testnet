@@ -31,7 +31,7 @@ app.get('/queryAllCars', async function (req, res) {
 // Get the network (channel) our contract is deployed to.
         const network = await gateway.getNetwork('mychannel');
 // Get the contract from the network.
-        const contract = network.getContract('mycc');
+        const contract = network.getContract('fabcar');
 // Evaluate the specified transaction.
           const result = await contract.evaluateTransaction('queryAllCars');
         console.log(`Transaction has been evaluated, result is: ${result.toString()}`);
@@ -64,7 +64,7 @@ app.post('/initLedger/', async function (req, res) {
 // Get the network (channel) our contract is deployed to.
         const network = await gateway.getNetwork('mychannel');
 // Get the contract from the network.
-        const contract = network.getContract('mycc');
+        const contract = network.getContract('fabcar');
 // Submit the specified transaction.
         let result=await contract.submitTransaction('initLedger');
         console.log(result.toString());
