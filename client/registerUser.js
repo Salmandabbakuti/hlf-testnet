@@ -3,7 +3,7 @@
 const { Gateway, Wallets } = require('fabric-network');
 const path = require('path');
 
-const ccpPath = path.resolve(__dirname, '..', 'network', 'basic-network', 'connection.json');
+const ccpPath = path.resolve(__dirname, '..', 'connection-org1.json');
 let user=process.argv[2];
 async function main() {
     try {
