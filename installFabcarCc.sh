@@ -28,6 +28,7 @@ echo 'uncomment lines 30, 32 in start.sh to test invoke and query.'
 
 echo 'first initailizing Chaincode '
 sudo docker exec -it cli peer chaincode invoke -o orderer.example.com:7050 -C mychannel -n fabcar --peerAddresses peer0.org1.example.com:7051 --isInit -c '{"function":"initLedger","Args":[]}' 
+sleep 5
 echo 'Querying Chaincode..'
 sudo docker exec -it cli peer chaincode query -C mychannel -n fabcar -c '{"function":"queryAllCars","Args":[]}'
 echo 'invoking chaincode from org2..'
