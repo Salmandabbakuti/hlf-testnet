@@ -13,7 +13,7 @@ sudo docker exec -it cli3 peer chaincode install -n mycc -p /opt/gopath/src/gith
 
 echo 'Instantiating Chaincode on channel ...'
 
-sudo docker exec -it cli peer chaincode instantiate -o orderer.example.com:7050 -C mychannel -n mycc /opt/gopath/src/github.com/chaincode/global -v v0 -c '{"Args": []}'
+sudo docker exec -it cli peer chaincode instantiate -o orderer.example.com:7050 -C mychannel -n mycc /opt/gopath/src/github.com/chaincode/global -v v0 -c '{"Args": []}' -P 
  
 echo 'All Done.. You are Good to go.. Bye'
 
