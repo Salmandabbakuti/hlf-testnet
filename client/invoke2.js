@@ -29,9 +29,11 @@ async function main() {
         const network = await gateway.getNetwork('mychannel');
 
         // Get the contract from the network.
-        const contract = network.getContract('ecom');
+        const contract = network.getContract('acl');
 
-        await contract.submitTransaction('buyProduct','Item0','Salman','2');
+let result =  await contract.submitTransaction("updateShipment","salman279","12345","T1582025992457","eioiew");
+        console.log(result.toString());      
+//  await contract.submitTransaction('buyProduct','Item0','Salman','2');
         console.log('Transaction has been submitted');
 
         // Disconnect from the gateway.
